@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- Smokes and Alcohol Psy Relief by Expand 1.0.0 -->
+<string_table>
+	<string id="ui_mcm_menu_psy_relief">
+		<text>Курево и выпивка помогают психике</text>
+	</string>
+	<string id="ui_mcm_psy_relief_title">
+		<text>Курево и выпивка помогают психике</text>
+	</string>
+	<string id="ui_mcm_psy_relief_author">
+		<text>автор: Expand</text>
+	</string>
+	<string id="ui_mcm_psy_relief_desc">
+		<text>Курево восстанавливает пси-здоровье вместо выведения радиации. Алкоголь по-прежнему выводит радиацию и вдобавок восстанавливает пси-здоровье. Восстановление идёт постепенно, пока действует предмет; эффекты нескольких предметов складываются. Опьянение усиливает восстановление пси и защищает от пси-урона.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_enabled">
+		<text>Включить восстановление пси</text>
+	</string>
+	<string id="ui_mcm_psy_relief_enabled_desc">
+		<text>Главный выключатель восстановления пси-здоровья и строки в подсказке. Курево не выводит радиацию даже при выключенном моде (это изменение в конфиге).</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_strength_title">
+		<text>Сила эффекта</text>
+	</string>
+	<string id="ui_mcm_psy_relief_smoke_preset">
+		<text>Курево: восстановление пси</text>
+	</string>
+	<string id="ui_mcm_psy_relief_smoke_preset_desc">
+		<text>Сколько пси-здоровья восстанавливает курево. Одна сигарета Marlboro даёт: Слабо — 3%, Умеренно — 4%, Средне — 5%, Крепко — 6,5%, Сильно — 8% пси-здоровья. Остальное курево меняется так же (кубинская сигара на «Средне» — 12%). Действует со следующего перекура.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_alcohol_preset">
+		<text>Алкоголь: восстановление пси</text>
+	</string>
+	<string id="ui_mcm_psy_relief_alcohol_preset_desc">
+		<text>Сколько пси-здоровья восстанавливает алкоголь. Один глоток водки «Столичная» даёт: Слабо — 6%, Умеренно — 8%, Средне — 10%, Крепко — 13%, Сильно — 16% пси-здоровья. Остальной алкоголь меняется так же (пиво на «Средне» — 5%). Действует со следующего глотка.</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_light">
+		<text>Слабо</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_mild">
+		<text>Умеренно</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_medium">
+		<text>Средне</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_potent">
+		<text>Крепко</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_strong">
+		<text>Сильно</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_auto_detect">
+		<text>Находить курево и алкоголь из других модов</text>
+	</string>
+	<string id="ui_mcm_psy_relief_auto_detect_desc">
+		<text>Курево и алкоголь из других модов тоже восстанавливают пси-здоровье: курево 5%, алкоголь 7% за использование (на «Средне»). Их выведение радиации, если оно есть, не убирается.</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_drunk_title">
+		<text>Опьянение</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_enabled">
+		<text>Пси-эффекты опьянения</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_enabled_desc">
+		<text>Пока вы пьяны, восстановление пси-здоровья усиливается, а часть любой его потери возвращается (настройки ниже). Оба эффекта растут вместе с опьянением: глоток водки — примерно 20% опьянения. Выкл.: алкоголь только восстанавливает пси, как остальные предметы.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore_preset">
+		<text>Опьянение: доп. восстановление пси</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore_preset_desc">
+		<text>Пресет для ползунка ниже. Число — насколько быстрее идёт всё восстановление пси-здоровья (предметы, регенерация, костры) при полном опьянении: +100% = вдвое быстрее. Навеселе — пропорционально меньше: после глотка водки (около 20% опьянения) +100% дают +20%.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore">
+		<text>Доп. восстановление пси при полном опьянении (%)</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore_desc">
+		<text>Всё восстановление пси-здоровья усиливается на столько при полном опьянении, при лёгком — пропорционально меньше. 100 = вдвое. 0 = выкл.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection_preset">
+		<text>Опьянение: пси-защита</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection_preset_desc">
+		<text>Пресет для ползунка ниже. Число — какая доля любой потери пси-здоровья возвращается при полном опьянении: 50% = половина. Навеселе — пропорционально меньше: после глотка водки (около 20% опьянения) 50% возвращают 10%.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection">
+		<text>Возврат потери пси при полном опьянении (%)</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection_desc">
+		<text>Такая доля любой потери пси-здоровья (пси-атаки, пси-поля, стресс) возвращается при полном опьянении, при лёгком — пропорционально меньше. От одного смертельного пси-удара не спасает. 0 = выкл.</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_light">
+		<text>Слабо (+50%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_mild">
+		<text>Умеренно (+75%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_medium">
+		<text>Средне (+100%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_potent">
+		<text>Крепко (+150%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_strong">
+		<text>Сильно (+200%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_light">
+		<text>Слабо (30%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_mild">
+		<text>Умеренно (40%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_medium">
+		<text>Средне (50%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_potent">
+		<text>Крепко (60%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_strong">
+		<text>Сильно (70%)</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_display_title">
+		<text>Отображение</text>
+	</string>
+	<string id="ui_mcm_psy_relief_tooltip">
+		<text>Строка в подсказке</text>
+	</string>
+	<string id="ui_mcm_psy_relief_tooltip_desc">
+		<text>Показывает в подсказке предмета, сколько пси-здоровья даёт одно использование и за сколько секунд.</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_debug_title">
+		<text>Отладка</text>
+	</string>
+	<string id="ui_mcm_psy_relief_debug">
+		<text>Отладочный лог</text>
+	</string>
+	<string id="ui_mcm_psy_relief_debug_desc">
+		<text>Пишет строку [PsyRelief] в лог игры при каждом перекуре или глотке. Только для отчётов об ошибках.</text>
+	</string>
+
+	<string id="st_psy_relief_stat">
+		<text>Восст. пси-здоровья</text>
+	</string>
+	<string id="st_psy_relief_tt">
+		<text>Восстанавливает пси-здоровье</text>
+	</string>
+	<string id="st_psy_relief_tt_time">
+		<text>за %d с</text>
+	</string>
+</string_table>

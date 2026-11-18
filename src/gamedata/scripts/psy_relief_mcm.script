@@ -1,0 +1,73 @@
+--------------------------------------------------------------------------------
+-- Smokes and Alcohol Psy Relief by Expand - MCM menu
+-- MCM only builds menus from scripts named *_mcm.script.
+-- Settings are read by psy_relief.script.
+--------------------------------------------------------------------------------
+
+-- drunk effects: presets move the sliders below them (MCM 1.7.1+ "preset" widget,
+-- pending until "Accept"); older MCM shows a plain list and the sliders are set by hand.
+-- psy_relief.script reads only the sliders.
+local DRUNK_LEVELS = { "light", "mild", "medium", "potent", "strong" }
+local DRUNK_RESTORE = { light = 50, mild = 75, medium = 100, potent = 150, strong = 200 }
+local DRUNK_PROTECTION = { light = 30, mild = 40, medium = 50, potent = 60, strong = 70 }
+
+local function drunk_list(prefix)
+	local t = {}
+	for i = 1, #DRUNK_LEVELS do
+		local k = DRUNK_LEVELS[i]
+		t[i] = { k, prefix .. k }
+	end
+	return t
+end
+
+local function drunk_presets(slider, values)
+	local p = {}
+	for k, v in pairs(values) do
+		p[k] = { [slider] = v }
+	end
+	return p
+end
+
+local function preset_type()
+	-- get_gui() was added in MCM 1.7.1 together with the preset widget
+	return (ui_mcm and ui_mcm.get_gui) and "preset" or "list"
+end
+
+local function strength_list()
+	return {
+		{ "light",  "psy_relief_light" },
+		{ "mild",   "psy_relief_mild" },
+		{ "medium", "psy_relief_medium" },
+		{ "potent", "psy_relief_potent" },
+		{ "strong", "psy_relief_strong" },
+	}
+end
+
+function on_mcm_load()
+	return {
+		id = "psy_relief", sh = true, gr = {
+			{ id = "title", type = "slide", link = "ui_options_slider_radio", text = "ui_mcm_psy_relief_title", size = {512, 50}, spacing = 20 },
+			{ id = "author", type = "desc", text = "ui_mcm_psy_relief_author", clr = {255, 160, 160, 160} },
+			{ id = "desc", type = "desc", text = "ui_mcm_psy_relief_desc" },
+			{ id = "enabled", type = "check", val = 1, def = true },
+
+			{ id = "strength_title", type = "title", text = "ui_mcm_psy_relief_strength_title", align = "l", clr = {255, 200, 200, 200} },
+			{ id = "smoke_preset", type = "list", val = 0, def = "medium", content = strength_list() },
+			{ id = "alcohol_preset", type = "list", val = 0, def = "medium", content = strength_list() },
+			{ id = "auto_detect", type = "check", val = 1, def = true },
+
+			{ id = "drunk_title", type = "title", text = "ui_mcm_psy_relief_drunk_title", align = "l", clr = {255, 200, 200, 200} },
+			{ id = "drunk_enabled", type = "check", val = 1, def = true },
+			{ id = "drunk_restore_preset", type = preset_type(), val = 0, def = "medium", content = drunk_list("psy_relief_dr_"), presets = drunk_presets("drunk_restore", DRUNK_RESTORE) },
+			{ id = "drunk_restore", type = "track", val = 2, min = 0, max = 300, step = 5, def = 100, prec = 0 },
+			{ id = "drunk_protection_preset", type = preset_type(), val = 0, def = "medium", content = drunk_list("psy_relief_dp_"), presets = drunk_presets("drunk_protection", DRUNK_PROTECTION) },
+			{ id = "drunk_protection", type = "track", val = 2, min = 0, max = 90, step = 5, def = 50, prec = 0 },
+
+			{ id = "display_title", type = "title", text = "ui_mcm_psy_relief_display_title", align = "l", clr = {255, 200, 200, 200} },
+			{ id = "tooltip", type = "check", val = 1, def = true },
+
+			{ id = "debug_title", type = "title", text = "ui_mcm_psy_relief_debug_title", align = "l", clr = {255, 200, 200, 200} },
+			{ id = "debug", type = "check", val = 1, def = false },
+		}
+	}
+end

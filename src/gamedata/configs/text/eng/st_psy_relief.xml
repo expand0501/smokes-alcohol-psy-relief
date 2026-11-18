@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- Smokes and Alcohol Psy Relief by Expand 1.0.0 -->
+<string_table>
+	<string id="ui_mcm_menu_psy_relief">
+		<text>Smokes and Alcohol Psy Relief</text>
+	</string>
+	<string id="ui_mcm_psy_relief_title">
+		<text>Smokes and Alcohol Psy Relief</text>
+	</string>
+	<string id="ui_mcm_psy_relief_author">
+		<text>by Expand</text>
+	</string>
+	<string id="ui_mcm_psy_relief_desc">
+		<text>Smokes restore psy health instead of radiation. Alcohol still restores radiation and also restores psy health. The amount is restored gradually while the item's effect lasts; several items stack. Being drunk boosts psy restore and protects against psy damage.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_enabled">
+		<text>Enable psy restore</text>
+	</string>
+	<string id="ui_mcm_psy_relief_enabled_desc">
+		<text>Master switch for the psy health restore and the tooltip line. Smokes stay without radiation restore even when this is off (that is a config change).</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_strength_title">
+		<text>Strength</text>
+	</string>
+	<string id="ui_mcm_psy_relief_smoke_preset">
+		<text>Smokes: psy restore</text>
+	</string>
+	<string id="ui_mcm_psy_relief_smoke_preset_desc">
+		<text>How much psy health smokes restore. One Marlboro cigarette restores: Light 3%, Mild 4%, Medium 5%, Potent 6.5%, Strong 8% of psy health. Other smokes change in the same proportion (a Cuban cigar gives 12% at Medium). Applies to the next smoke.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_alcohol_preset">
+		<text>Alcohol: psy restore</text>
+	</string>
+	<string id="ui_mcm_psy_relief_alcohol_preset_desc">
+		<text>How much psy health alcohol restores. One sip of Stolichnaya vodka restores: Light 6%, Mild 8%, Medium 10%, Potent 13%, Strong 16% of psy health. Other drinks change in the same proportion (a beer gives 5% at Medium). Applies to the next drink.</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_light">
+		<text>Light</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_mild">
+		<text>Mild</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_medium">
+		<text>Medium</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_potent">
+		<text>Potent</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_strong">
+		<text>Strong</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_auto_detect">
+		<text>Detect smokes and alcohol from other mods</text>
+	</string>
+	<string id="ui_mcm_psy_relief_auto_detect_desc">
+		<text>Smokes and alcohol added by other mods also restore psy health: smokes 5%, alcohol 7% per use at Medium. Their radiation restore, if they have one, is not removed.</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_drunk_title">
+		<text>Being drunk</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_enabled">
+		<text>Drunk psy effects</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_enabled_desc">
+		<text>While you are drunk, psy health restore is raised and part of every psy health loss is given back (settings below). Both grow with how drunk you are: one sip of vodka makes you about 20% drunk. Off: alcohol only restores psy like the other items.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore_preset">
+		<text>Drunk: extra psy restore</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore_preset_desc">
+		<text>Preset for the slider below. The number is how much faster all psy health restore (items, regeneration, campfires) goes when you are fully drunk: +100% = twice as fast. Tipsy = proportionally less: after one sip of vodka (about 20% drunk) +100% gives +20%.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore">
+		<text>Extra psy restore at full drunkenness (%)</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_restore_desc">
+		<text>All psy health restore is raised by this much when you are fully drunk, proportionally less when you are only tipsy. 100 = doubled. 0 = off.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection_preset">
+		<text>Drunk: psy protection</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection_preset_desc">
+		<text>Preset for the slider below. The number is the share of every psy health loss that is given back when you are fully drunk: 50% = half of it. Tipsy = proportionally less: after one sip of vodka (about 20% drunk) 50% gives back 10%.</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection">
+		<text>Psy loss given back at full drunkenness (%)</text>
+	</string>
+	<string id="ui_mcm_psy_relief_drunk_protection_desc">
+		<text>This share of every psy health loss (psy attacks, psy fields, stress) is given back when you are fully drunk, proportionally less when you are only tipsy. It does not save you from a single lethal psy hit. 0 = off.</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_light">
+		<text>Light (+50%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_mild">
+		<text>Mild (+75%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_medium">
+		<text>Medium (+100%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_potent">
+		<text>Potent (+150%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dr_strong">
+		<text>Strong (+200%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_light">
+		<text>Light (30%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_mild">
+		<text>Mild (40%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_medium">
+		<text>Medium (50%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_potent">
+		<text>Potent (60%)</text>
+	</string>
+	<string id="ui_mcm_lst_psy_relief_dp_strong">
+		<text>Strong (70%)</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_display_title">
+		<text>Display</text>
+	</string>
+	<string id="ui_mcm_psy_relief_tooltip">
+		<text>Tooltip line</text>
+	</string>
+	<string id="ui_mcm_psy_relief_tooltip_desc">
+		<text>Shows in the item tooltip how much psy health one use restores and over how many seconds.</text>
+	</string>
+
+	<string id="ui_mcm_psy_relief_debug_title">
+		<text>Debug</text>
+	</string>
+	<string id="ui_mcm_psy_relief_debug">
+		<text>Debug log</text>
+	</string>
+	<string id="ui_mcm_psy_relief_debug_desc">
+		<text>Writes a [PsyRelief] line to the game log for every smoke or drink. For bug reports only.</text>
+	</string>
+
+	<string id="st_psy_relief_stat">
+		<text>Psy health restoration</text>
+	</string>
+	<string id="st_psy_relief_tt">
+		<text>Restores psy health</text>
+	</string>
+	<string id="st_psy_relief_tt_time">
+		<text>over %d s</text>
+	</string>
+</string_table>

@@ -1,0 +1,12 @@
+{
+  "name": "Smokes and Alcohol Psy Relief",
+  "version": "1.0.0",
+  "zip": "Smokes_and_Alcohol_Psy_Relief_by_Expand_{version}",
+  "versionFiles": [
+    "src/readme.md",
+    "src/gamedata/scripts/psy_relief.script",
+    "src/gamedata/configs/mod_system_zzz_psy_relief.ltx",
+    "src/gamedata/configs/text/eng/st_psy_relief.xml",
+    "src/gamedata/configs/text/rus/st_psy_relief.xml"
+  ]
+}

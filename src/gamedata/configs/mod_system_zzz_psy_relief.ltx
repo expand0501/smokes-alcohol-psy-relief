@@ -1,0 +1,71 @@
+; Smokes and Alcohol Psy Relief by Expand 1.0.0 (for G.A.M.M.A.)
+;
+; 1) Smokes no longer restore radiation: their boost_radiation_restore key is removed (DLTX "!key").
+;    The file name starts with "zzz" so it is applied after other DLTX files that change these items
+;    (e.g. "drinks and radiation item rebalancing"). Their other stats are not touched.
+;    Alcohol keeps its radiation restore.
+;
+; 2) [psy_relief_items]: known items that restore psy health, read by psy_relief.script.
+;    item_section = kind, psy health per use at the "Medium" preset (0..1, 0.05 = 5%)[, restore time in seconds]
+;    kind: smoke or alcohol (each kind has its own strength preset in MCM), or none (never restores psy).
+;    Without a restore time the item's own boost_time is used (the time its booster lasts).
+;    Other mods can add or change items with DLTX in their own mod_system_*.ltx:
+;        ![psy_relief_items]
+;        my_cigarettes = smoke, 0.05
+;
+; 3) Items not listed are detected automatically (MCM option, on by default):
+;    smoke   = use_sound with "inv_smoke" or required_tool = box_matches, and no boost_telepat_protection
+;              (joint and marijuana already have their own psy booster and are skipped)
+;    alcohol = eat_alcohol > 0 and a drink (kind = i_drink or a use_sound with "drink"); meds are skipped
+;    They restore the amounts in [psy_relief_auto]. Their radiation restore (if any) stays: to remove it,
+;    add a DLTX patch like the ones below for that item.
+
+![cigarettes]
+!boost_radiation_restore
+
+![cigarettes_lucky]
+!boost_radiation_restore
+
+![cigarettes_russian]
+!boost_radiation_restore
+
+![cigar]
+!boost_radiation_restore
+
+![cigar1]
+!boost_radiation_restore
+
+![cigar2]
+!boost_radiation_restore
+
+![cigar3]
+!boost_radiation_restore
+
+![tobacco]
+!boost_radiation_restore
+
+![hand_rolling_tobacco]
+!boost_radiation_restore
+
+[psy_relief_items]
+; smokes (per use; packs and tobacco have 3 uses, the Cuban cigar 1; cigar1..3 are Soviet cigarettes)
+cigarettes           = smoke, 0.05
+cigarettes_lucky     = smoke, 0.06
+cigarettes_russian   = smoke, 0.04
+cigar                = smoke, 0.12
+cigar1               = smoke, 0.08
+cigar2               = smoke, 0.09
+cigar3               = smoke, 0.10
+tobacco              = smoke, 0.09
+hand_rolling_tobacco = smoke, 0.08
+; alcohol (per use; bottles have 3 uses, beer 1)
+vodka                = alcohol, 0.08
+vodka2               = alcohol, 0.07
+vodka_quality        = alcohol, 0.10
+bottle_metal         = alcohol, 0.08
+beer                 = alcohol, 0.05
+
+[psy_relief_auto]
+; psy health per use at the "Medium" preset for auto-detected items
+smoke                = 0.05
+alcohol              = 0.07
