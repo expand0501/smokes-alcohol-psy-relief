@@ -33,8 +33,9 @@ In `mod.json`, readme title + history, script header, ltx header, both text file
 ## How it works (keep)
 - Auto-detection on the final config, lazily per section (cache): smoke = `use_sound` contains `inv_smoke` or
   `required_tool = box_matches`, skipped when `boost_telepat_protection > 0` (joint, marijuana); alcohol =
-  `eat_alcohol > 0` and (`kind = i_drink` or a `use_sound` with `drink`) - akvatab / tetanus / yadylin have
-  alcohol but no kind and are skipped. Amounts from `[psy_relief_auto]` (smoke 0.05, alcohol 0.07). List kind
+  `eat_alcohol > 0` and (`kind = i_drink` or a `use_sound` with `drink`) - akvatab / tetanus have
+  alcohol but no drink kind or sound and are skipped. Yadylin (`kind = i_medical`, drink sound `inv_drink_flask`,
+  `eat_alcohol` 0.45) would match: listed as `none` (Expand, 2026-11-26). Amounts from `[psy_relief_auto]` (smoke 0.05, alcohol 0.07). List kind
   `none` excludes. Detected smokes keep their radiation restore (no Lua way to remove a booster).
 - Drunkenness: `actor:cast_Actor():conditions():GetAlcohol()` (monolith, "demonized"; checked once on first update).
   Vodka sip +0.195, decay `alcohol_v = -0.00052` (GAMMA actor ltx), smokes have negative eat_alcohol (sober up).
@@ -50,7 +51,10 @@ In `mod.json`, readme title + history, script header, ltx header, both text file
   (in profile `v31.1 - radiation rework` "drinks and radiation item rebalancing" sets smokes to ~200 s; base GAMMA ~50 s).
 - `actor_on_update` registered only while a dose is active or alcohol > 0.005 (any item with eat_alcohol > 0 starts it), 0.5 s tick. Doses saved in `m_data.psy_relief`
   (`v`, `doses = {{a, t}}`), cleared on net_destroy and on disable.
-- DLTX file named `zzz` so its key removal comes after "drinks and radiation item rebalancing"
+- Smokes: `boost_radiation_restore = 0` (Expand, 2026-11-26; was `!boost_radiation_restore` up to 1.0.0). The key
+  cannot disappear: a DLTX-deleted key falls back to the parent `[booster]` (0.0, xray-monolith `Xr_ini.cpp`
+  MergeSections), and `= 0` also wins if a mod ever changes the parent. Value 0 = no booster (`ApplyBooster` needs > 0).
+- DLTX file named `zzz` so its value comes after "drinks and radiation item rebalancing"
   (`mod_system_drink_nerfs.ltx`), which sets `boost_radiation_restore` on the same items.
 - Tooltip: wraps `ui_item.item_description` and `ui_item.get_sec_desc` like S.T.I.M. (chain-safe).
   Since 0.4.2 (Expand asked, 2026-11-17) the psy restore is a row in the consumable stats block
@@ -67,6 +71,36 @@ In `mod.json`, readme title + history, script header, ltx header, both text file
 - Item stats: `G.A.M.M.A. UI` items_drink.ltx (base, profile `G.A.M.M.A`) / `G.A.M.M.A. UI - Expand` (wins in
   `v31.1 - radiation rework`; same smoke/alcohol values). Not in the GAMMA GitHub repo.
 - "drinks and radiation item rebalancing" is enabled only in `v31.1 - radiation rework`.
+
+## Tests
+- 1.0.1 built 2026-11-26 (`dist\current\Smokes_and_Alcohol_Psy_Relief_by_Expand_1.0.1.zip`): `yadylin = none`, smokes
+  `boost_radiation_restore = 0`. Expand confirmed it tested in game (2026-11-26); committed, tagged `v1.0.1`, pushed,
+  GitHub Release published 2026-11-26. Runner check `yadylin_none` (basics) expects it; rerun `basics,auto,smoke_dose`
+  in `Claude Test` when convenient.
+- In-game suite `run.ps1 -Suite sapr` (written 2026-11-26): plan, scenarios and what stays manual in
+  `tests.md`. It tests the installed zip unchanged (upvalues), so no test hooks in the mod.
+- 2026-11-26 `basics` run 1 (0.4.2, `Claude Test`, `reports\autotest-20261126-165054.txt`): 21 PASS / 4 FAIL, all 4 runner
+  bugs, fixed in the runner. Finding: after `!boost_radiation_restore` the 9 smokes still **have** the key in game
+  (verified by the run). Cause (verified in code): smokes inherit `[booster]` (defines.ltx: `boost_radiation_restore = 0.0`)
+  and DLTX's `MergeSections` puts the parent's value back for a deleted key (xray-monolith `Xr_ini.cpp`, "In Parent+Base
+  check, push Parent KV pair"). Harmless: `CActorCondition::ApplyBooster` applies a booster only when its value > 0, so
+  smokes get no radiation booster (verified in game 2026-11-26, see the full run below). The ltx/readme wording "key is
+  removed" is not exact; a future version could write `boost_radiation_restore = 0` instead (same effect, says what happens).
+- 2026-11-26 full run (0.4.2 = 1.0.0 code, profile `Claude Test`, save `claude_test`, `reports\autotest-20261126-205847.txt`,
+  13 scenarios in one launch): **12 PASS, 1 FAIL** (`auto`). Logged: the 9 smokes have `boost_radiation_restore = 0.0`
+  (inherited, see above), a real cigarette applies no radiation booster (types {1}), vodka does (types {2}): the DLTX
+  removal works in effect (verified in game). Drunk formula matched to 4 decimals (loss 0.0248, gain 0.0491, dose
+  0.0746 vs 0.0748). Restore times in this profile: cigarettes 208 s, cigar 216 s, vodka 70 s, beer 60 s.
+  "Run automatically" only, not tested by Expand (tooltip looks etc.: `tests.md`).
+- **Bug (verified; fixed in src 2026-11-26 with `yadylin = none`, Expand's choice, not built / not run yet): Yadylin, a
+  medicine, restores 7% psy health as auto-detected alcohol.** Its final config:
+  `kind = i_medical`, `eat_alcohol = 0.45` (G.A.M.M.A. Medications Balance / drinks and radiation item rebalancing),
+  `use_sound = interface\inv_drink_flask` (vanilla items_drugs.ltx). The rule "eat_alcohol > 0 and (kind = i_drink or a
+  use_sound with `drink`)" matches it through the sound; the note under "How it works" that yadylin has no kind is
+  wrong. Same in base GAMMA (inference: vanilla sound + base GAMMA's Medications Balance). Fix idea (new version,
+  Expand decides): in `detect_kind` return nil for `kind = i_medical` (or: alcohol only with `kind = i_drink`, or no
+  kind and a drink sound); and/or `yadylin = none` in `[psy_relief_items]`. The runner's `auto_skips` check then passes.
+
 
 ## Open items
 - 0.1.0 built, not tested in game. Check: log `[PsyRelief] 14 listed items restore psy health` (0.2.0 text) and

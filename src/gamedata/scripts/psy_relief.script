@@ -1,11 +1,11 @@
 --------------------------------------------------------------------------------
--- Smokes and Alcohol Psy Relief by Expand  v1.0.0  (for G.A.M.M.A.)
+-- Smokes and Alcohol Psy Relief by Expand  v1.0.1  (for G.A.M.M.A.)
 --
 -- Smokes restore psy health instead of radiation; alcohol keeps its radiation
 -- restore and also restores psy health. Being drunk boosts psy restore and
 -- gives psy protection.
 --
--- - Smokes lose boost_radiation_restore in mod_system_zzz_psy_relief.ltx (DLTX).
+-- - Smokes get boost_radiation_restore = 0 in mod_system_zzz_psy_relief.ltx (DLTX).
 -- - [psy_relief_items] in the same file lists known items: kind (smoke /
 --   alcohol / none), psy health per use at the Medium preset, optional time.
 -- - Other items are detected from their final config (auto-detect option):

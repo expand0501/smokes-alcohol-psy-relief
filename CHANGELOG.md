@@ -1,5 +1,9 @@
 # Changelog - Smokes and Alcohol Psy Relief by Expand
 
+- 1.0.1: Yadylin no longer restores psy health (a medicine with alcohol and a drink sound, which the auto-detection
+  took for alcohol): listed as `none` in `[psy_relief_items]`. Smokes get `boost_radiation_restore = 0` instead of
+  the DLTX key removal `!boost_radiation_restore`: same in game (no radiation restore; a deleted key falls back to
+  the parent's 0.0), but it also wins if a mod changes the parent section.
 - 1.0.0: first public release. No code changes since 0.4.2; the version label only.
 - 0.4.2: the psy restore is now a row in the item info's consumable stats block ("Psy health restoration" /
   «Восст. пси-здоровья», psy icon, after health/radiation restore) instead of a description line. The restore

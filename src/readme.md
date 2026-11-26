@@ -1,4 +1,4 @@
-**Smokes and Alcohol Psy Relief by Expand 1.0.0**
+**Smokes and Alcohol Psy Relief by Expand 1.0.1**
 
 For S.T.A.L.K.E.R. Anomaly G.A.M.M.A. Author: Expand
 
@@ -32,6 +32,7 @@ Enable, smokes strength (a Marlboro cigarette restores Light 3% / Mild 4% / Medi
 - Safe to add to and remove from an existing save. After removal smokes restore radiation again.
 
 **Version history**
+- 1.0.1: Yadylin (a medicine) no longer counts as alcohol and restores no psy health; smokes' radiation restore is set to 0 explicitly (same effect as before, more robust against other mods).
 - 1.0.0: first public release (same as 0.4.2).
 - 0.4.2: the psy health restore moved from the description into the item's stats block as its own row with the psy icon.
 - 0.4.1: Russian MCM title renamed; MCM hints of the strength dropdowns show concrete psy health amounts per step, the drunk preset hints explain what the numbers mean.

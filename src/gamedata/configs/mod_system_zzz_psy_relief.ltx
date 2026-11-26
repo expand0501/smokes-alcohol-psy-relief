@@ -1,6 +1,8 @@
-; Smokes and Alcohol Psy Relief by Expand 1.0.0 (for G.A.M.M.A.)
+; Smokes and Alcohol Psy Relief by Expand 1.0.1 (for G.A.M.M.A.)
 ;
-; 1) Smokes no longer restore radiation: their boost_radiation_restore key is removed (DLTX "!key").
+; 1) Smokes no longer restore radiation: their boost_radiation_restore is set to 0 (the engine applies a
+;    booster only when its value is above 0). Not "!boost_radiation_restore": a key deleted with DLTX falls
+;    back to the parent's value ([booster]), so it would come back if any mod changed the parent.
 ;    The file name starts with "zzz" so it is applied after other DLTX files that change these items
 ;    (e.g. "drinks and radiation item rebalancing"). Their other stats are not touched.
 ;    Alcohol keeps its radiation restore.
@@ -16,36 +18,37 @@
 ; 3) Items not listed are detected automatically (MCM option, on by default):
 ;    smoke   = use_sound with "inv_smoke" or required_tool = box_matches, and no boost_telepat_protection
 ;              (joint and marijuana already have their own psy booster and are skipped)
-;    alcohol = eat_alcohol > 0 and a drink (kind = i_drink or a use_sound with "drink"); meds are skipped
+;    alcohol = eat_alcohol > 0 and a drink (kind = i_drink or a use_sound with "drink"); meds without a drink kind
+;              or sound are skipped (yadylin has a drink sound: listed as "none" below)
 ;    They restore the amounts in [psy_relief_auto]. Their radiation restore (if any) stays: to remove it,
 ;    add a DLTX patch like the ones below for that item.
 
 ![cigarettes]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![cigarettes_lucky]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![cigarettes_russian]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![cigar]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![cigar1]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![cigar2]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![cigar3]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![tobacco]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 ![hand_rolling_tobacco]
-!boost_radiation_restore
+boost_radiation_restore = 0
 
 [psy_relief_items]
 ; smokes (per use; packs and tobacco have 3 uses, the Cuban cigar 1; cigar1..3 are Soviet cigarettes)
@@ -64,6 +67,8 @@ vodka2               = alcohol, 0.07
 vodka_quality        = alcohol, 0.10
 bottle_metal         = alcohol, 0.08
 beer                 = alcohol, 0.05
+; never: a medicine that the auto-detection would take for alcohol (eat_alcohol + a drink sound)
+yadylin              = none
 
 [psy_relief_auto]
 ; psy health per use at the "Medium" preset for auto-detected items
